@@ -1,0 +1,318 @@
+CCS PCM C Compiler, Version 5.008, 5967               21-jun-14 20:36
+
+               Filename:   D:\IGNACIO\Programacion\Microcontroladores\PicC\16f628a\Enclavamiento_F\Enclavamiento.lst
+
+               ROM used:   187 words (9%)
+                           Largest free fragment is 1861
+               RAM used:   15 (7%) at main() level
+                           18 (8%) worst case
+               Stack used: 4 locations (2 in main + 2 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0AA
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   7F,W
+0009:  MOVWF  20
+000A:  MOVF   0A,W
+000B:  MOVWF  27
+000C:  CLRF   0A
+000D:  SWAPF  20,F
+000E:  MOVF   04,W
+000F:  MOVWF  22
+0010:  MOVF   77,W
+0011:  MOVWF  23
+0012:  MOVF   78,W
+0013:  MOVWF  24
+0014:  MOVF   79,W
+0015:  MOVWF  25
+0016:  MOVF   7A,W
+0017:  MOVWF  26
+0018:  BCF    03.7
+0019:  BCF    03.5
+001A:  BTFSS  0B.3
+001B:  GOTO   01E
+001C:  BTFSC  0B.0
+001D:  GOTO   03D
+001E:  BTFSS  0B.4
+001F:  GOTO   022
+0020:  BTFSC  0B.1
+0021:  GOTO   039
+0022:  MOVF   22,W
+0023:  MOVWF  04
+0024:  MOVF   23,W
+0025:  MOVWF  77
+0026:  MOVF   24,W
+0027:  MOVWF  78
+0028:  MOVF   25,W
+0029:  MOVWF  79
+002A:  MOVF   26,W
+002B:  MOVWF  7A
+002C:  MOVF   27,W
+002D:  MOVWF  0A
+002E:  SWAPF  21,W
+002F:  MOVWF  03
+0030:  SWAPF  7F,F
+0031:  SWAPF  7F,W
+0032:  RETFIE
+.................... #include <16F628A.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+....................  
+.................... #list 
+....................  
+....................  
+.................... #FUSES HS,NOWDT,NOPROTECT,NOLVP 
+.................... #use delay(internal=4000000) 
+*
+0095:  MOVLW  2A
+0096:  MOVWF  04
+0097:  BCF    03.7
+0098:  MOVF   00,W
+0099:  BTFSC  03.2
+009A:  GOTO   0A9
+009B:  MOVLW  01
+009C:  MOVWF  78
+009D:  CLRF   77
+009E:  DECFSZ 77,F
+009F:  GOTO   09E
+00A0:  DECFSZ 78,F
+00A1:  GOTO   09D
+00A2:  MOVLW  4A
+00A3:  MOVWF  77
+00A4:  DECFSZ 77,F
+00A5:  GOTO   0A4
+00A6:  GOTO   0A7
+00A7:  DECFSZ 00,F
+00A8:  GOTO   09B
+00A9:  GOTO   0B9 (RETURN)
+....................  
+.................... #USE FAST_IO(B)   //Puerto B 
+.................... #USE FAST_IO(A)   //Puerto D 
+.................... //#BIT RBIF = 0x0B.0 
+....................  
+....................  
+.................... // ***************************************************************** 
+.................... // Declaracino de Variables 
+.................... int1 RB4_ant; 
+.................... int1 RB5_ant; 
+.................... int1 RB6_ant; 
+.................... int1 RB7_ant; 
+.................... //****************************************************************** 
+....................  
+.................... // ***************************************************************** 
+.................... // Declaracion de Funciones 
+.................... void Configuracion(); 
+.................... void Configurar_interrupciones(); 
+.................... void Variar_led(); 
+.................... void Verificar_RB(); 
+....................  
+.................... //****************************************************************** 
+....................  
+.................... // ***************************************************************** 
+.................... // Declaracion de las Interrupciones 
+.................... #INT_EXT       //Sentencias de la interrupcion RB0 
+.................... void ext_isr(){ 
+....................    Variar_led(); 
+*
+0039:  CALL   033
+.................... } 
+....................  
+003A:  BCF    0B.1
+003B:  BCF    0A.3
+003C:  GOTO   022
+.................... #INT_RB 
+.................... void RB_isr() { 
+....................    Variar_led(); 
+003D:  CALL   033
+....................    //RBIF = 0; 
+003E:  BCF    0B.0
+003F:  BCF    0A.3
+0040:  GOTO   022
+.................... } 
+....................  
+.................... //****************************************************************** 
+....................  
+.................... // ***************************************************************** 
+.................... // Funcion Prinipal 
+.................... void main() 
+*
+00AA:  MOVF   03,W
+00AB:  ANDLW  1F
+00AC:  MOVWF  03
+00AD:  BSF    03.5
+00AE:  BSF    0E.3
+00AF:  MOVLW  07
+00B0:  BCF    03.5
+00B1:  MOVWF  1F
+00B2:  BCF    03.7
+.................... { 
+....................    Configuracion(); 
+00B3:  GOTO   041
+....................    Configurar_interrupciones(); 
+00B4:  GOTO   055
+....................    while(TRUE) 
+....................    { 
+....................      Verificar_RB(); 
+00B5:  GOTO   05C
+....................      delay_ms(50); 
+00B6:  MOVLW  32
+00B7:  MOVWF  2A
+00B8:  GOTO   095
+00B9:  GOTO   0B5
+....................    } 
+....................  
+.................... } 
+.................... //***************************************************************** 
+00BA:  SLEEP
+....................  
+.................... // **************************************************************** 
+.................... // Definicion de Funciones 
+.................... void Configuracion(){ 
+....................    SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada 
+*
+0041:  MOVLW  FF
+0042:  BSF    03.5
+0043:  MOVWF  06
+....................    SET_TRIS_A(0x00);    //configura PORTD salida   
+0044:  MOVLW  00
+0045:  MOVWF  05
+....................    OUTPUT_A(0x00);   //inicializando PORTD en 0x00 
+0046:  BCF    03.5
+0047:  CLRF   05
+....................    RB4_ant = input(PIN_B4); 
+0048:  BCF    29.0
+0049:  BTFSC  06.4
+004A:  BSF    29.0
+....................    RB5_ant = input(PIN_B5); 
+004B:  BCF    29.1
+004C:  BTFSC  06.5
+004D:  BSF    29.1
+....................    RB6_ant = input(PIN_B6); 
+004E:  BCF    29.2
+004F:  BTFSC  06.6
+0050:  BSF    29.2
+....................    RB7_ant = input(PIN_B7); 
+0051:  BCF    29.3
+0052:  BTFSC  06.7
+0053:  BSF    29.3
+0054:  GOTO   0B4 (RETURN)
+.................... } 
+....................  
+.................... void Configurar_interrupciones(){ 
+....................  
+....................    enable_interrupts(INT_EXT);    // Habilita la interrupcion RB0 
+0055:  BSF    0B.4
+....................    //enable_interrupts(INT_RB);    // Habilita la interrupcion RB 
+....................    ext_int_edge(H_TO_L);         // Flag INTF si flanco de bajada / H_TO_L bajada 
+0056:  BSF    03.5
+0057:  BCF    01.6
+....................    enable_interrupts(GLOBAL); 
+0058:  MOVLW  C0
+0059:  BCF    03.5
+005A:  IORWF  0B,F
+005B:  GOTO   0B5 (RETURN)
+....................  
+.................... } 
+....................  
+.................... void Variar_led(){ 
+....................    if (input(PIN_A0) == 1 ){ 
+*
+0033:  BTFSS  05.0
+0034:  GOTO   037
+....................          output_low(PIN_A0);   //establece la salida del PORTD 
+0035:  BCF    05.0
+....................       }else { 
+0036:  GOTO   038
+....................          output_high(PIN_A0); 
+0037:  BSF    05.0
+....................       } 
+0038:  RETURN
+.................... } 
+....................  
+.................... void Verificar_RB(){ 
+....................    if (input(PIN_B4) == 1 && RB4_ant == 0){ 
+*
+005C:  BTFSS  06.4
+005D:  GOTO   067
+005E:  BTFSC  29.0
+005F:  GOTO   067
+0060:  CLRF   28
+0061:  BTFSC  0B.7
+0062:  BSF    28.7
+0063:  BCF    0B.7
+....................       Variar_led(); 
+0064:  CALL   033
+0065:  BTFSC  28.7
+0066:  BSF    0B.7
+....................    } 
+....................    if (input(PIN_B5) == 1 && RB5_ant == 0){ 
+0067:  BTFSS  06.5
+0068:  GOTO   072
+0069:  BTFSC  29.1
+006A:  GOTO   072
+006B:  CLRF   28
+006C:  BTFSC  0B.7
+006D:  BSF    28.7
+006E:  BCF    0B.7
+....................       Variar_led(); 
+006F:  CALL   033
+0070:  BTFSC  28.7
+0071:  BSF    0B.7
+....................    } 
+....................    if (input(PIN_B6) == 1 && RB6_ant == 0){ 
+0072:  BTFSS  06.6
+0073:  GOTO   07D
+0074:  BTFSC  29.2
+0075:  GOTO   07D
+0076:  CLRF   28
+0077:  BTFSC  0B.7
+0078:  BSF    28.7
+0079:  BCF    0B.7
+....................       Variar_led(); 
+007A:  CALL   033
+007B:  BTFSC  28.7
+007C:  BSF    0B.7
+....................    } 
+....................    if (input(PIN_B7) == 1 && RB7_ant == 0){ 
+007D:  BTFSS  06.7
+007E:  GOTO   088
+007F:  BTFSC  29.3
+0080:  GOTO   088
+0081:  CLRF   28
+0082:  BTFSC  0B.7
+0083:  BSF    28.7
+0084:  BCF    0B.7
+....................       Variar_led(); 
+0085:  CALL   033
+0086:  BTFSC  28.7
+0087:  BSF    0B.7
+....................    } 
+....................    RB4_ant = input(PIN_B4); 
+0088:  BCF    29.0
+0089:  BTFSC  06.4
+008A:  BSF    29.0
+....................    RB5_ant = input(PIN_B5); 
+008B:  BCF    29.1
+008C:  BTFSC  06.5
+008D:  BSF    29.1
+....................    RB6_ant = input(PIN_B6); 
+008E:  BCF    29.2
+008F:  BTFSC  06.6
+0090:  BSF    29.2
+....................    RB7_ant = input(PIN_B7); 
+0091:  BCF    29.3
+0092:  BTFSC  06.7
+0093:  BSF    29.3
+0094:  GOTO   0B6 (RETURN)
+.................... } 
+.................... //**************************************************************** 
+
+Configuration Fuses:
+   Word  1: 3F70   NOWDT PUT INTRC_IO MCLR BROWNOUT NOLVP NOCPD NOPROTECT

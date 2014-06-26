@@ -1,0 +1,9 @@
+ÀÄFocoAplausoControl
+   ÃÄMAIN  0/16  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄCargar_configuracion  0/11  Ram=0
+   ³  ÀÄConfigurar_interrupciones  0/10  Ram=0
+   ÃÄEXT_isr  0/5  Ram=0
+   ³  ÀÄinvertir_PORTD  0/6  Ram=1
+   ÀÄRB_isr  0/14  Ram=1
+      ÀÄinvertir_PORTD  0/6  Ram=1

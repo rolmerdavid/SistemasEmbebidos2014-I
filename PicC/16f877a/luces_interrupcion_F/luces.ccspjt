@@ -1,0 +1,31 @@
+[PROJECT]
+Target=luces.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=luces.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\Juego de luces\luces]
+Type=4
+[mru-list]
+1=luces.c
+[Opened Files]
+1=luces.c
+2=
+3=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T3_E2\T3_E2.c
+4=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T3_E3\T3_E3.c
+5=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T3_E4\T3_E4.c
+6=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T3_E5\T3_E5.c
+7=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T3_E6\T3_E6.c
+8=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T3_E7\T3_E7.c
+9=..\..\..\..\Universidad\Ciclo2014_I\Tiempo Real\Trabajo1\recepcion AN0_transmisionMatlab\recepcionPicPot.c
+10=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T4_E2\T4_E2.c
+11=
+[luces.c]
+Type=4
+[Units]
+Count=1
+1=luces (main)

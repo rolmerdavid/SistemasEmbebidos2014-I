@@ -1,0 +1,25 @@
+#include <16F628A.h>
+
+#FUSES HS,NOWDT,NOPROTECT,NOLVP
+#USE delay(internal=4000000)
+#BYTE PORTA = 0x05   //Asignando PORTD
+#USE FAST_IO(B)   //Puerto B
+#USE FAST_IO(A)   //Puerto D
+
+
+void main()
+{
+   SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada
+   SET_TRIS_A(0x00);    //configura PORTD salida  
+   OUTPUT_A(0x00);   //inicializando PORTD en 0x00
+      
+   while(true)
+   {
+      if (input(PIN_B1) == 1 ){
+         OUTPUT_A(0x00);   //establece la salida del PORTD
+      }else {
+         OUTPUT_A(0xFF);
+      }
+   }
+
+}

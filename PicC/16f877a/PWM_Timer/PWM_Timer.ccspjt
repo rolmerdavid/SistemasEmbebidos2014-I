@@ -1,0 +1,19 @@
+[PROJECT]
+Target=D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\PWM_Timer\PWM_Timer.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+[Target Data]
+FileList=PWM_Timer.c
+[Directories]
+Include=
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\PWM_Timer\PWM_Timer]
+Type=4
+[mru-list]
+1=PWM_Timer.c
+[Units]
+Count=1
+1=PWM_Timer (main)
+[Opened Files]
+1=PWM_Timer.c
+2=

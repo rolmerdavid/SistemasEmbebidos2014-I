@@ -1,0 +1,23 @@
+[PROJECT]
+Target=Dimmer.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=Dimmer.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\Dimmer\Dimmer]
+Type=4
+[mru-list]
+1=Dimmer.c
+[Opened Files]
+1=Dimmer.c
+2=
+3=
+[Dimmer.c]
+Type=4
+[Units]
+Count=1
+1=Dimmer (main)

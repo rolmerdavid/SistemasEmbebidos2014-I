@@ -1,0 +1,15 @@
+ÀÄEnclavamiento
+   ÃÄMAIN  0/17  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄConfiguracion  0/20  Ram=0
+   ³  ÃÄConfigurar_interrupciones  0/7  Ram=0
+   ³  ÃÄVerificar_RB  0/57  Ram=2
+   ³  ³  ÃÄVariar_led  0/6  Ram=1
+   ³  ³  ÃÄVariar_led  0/6  Ram=1
+   ³  ³  ÃÄVariar_led  0/6  Ram=1
+   ³  ³  ÀÄVariar_led  0/6  Ram=1
+   ³  ÀÄ@delay_ms1  0/21  Ram=1
+   ÃÄext_isr  0/4  Ram=0
+   ³  ÀÄVariar_led  0/6  Ram=1
+   ÀÄRB_isr  0/4  Ram=0
+      ÀÄVariar_led  0/6  Ram=1

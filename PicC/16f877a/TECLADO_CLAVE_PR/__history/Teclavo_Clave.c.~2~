@@ -1,0 +1,15 @@
+#include "16f877a.h"
+#device ADC=10 // LEE 10 BITS
+#fuses  NOWDT, HS, NOLVP, NOPROTECT
+#use delay(clock=10000000)
+#include "LCD.c"
+#include "kbd2.c"
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

@@ -1,0 +1,109 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PORTD
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     angulo
+028     Portb1_ant
+029     Portb1_now
+02A     VariacionAnguloAplauso.incremento
+02B     VariacionAnguloAplauso.@SCRATCH1
+02C     Disparar.ang
+02D     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07F     @INTERRUPT_AREA
+09C.6   C1OUT
+09C.7   C2OUT
+0FF     @INTERRUPT_AREA
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+17F     @INTERRUPT_AREA
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+2FF     @INTERRUPT_AREA
+37F     @INTERRUPT_AREA
+3FF     @INTERRUPT_AREA
+47F     @INTERRUPT_AREA
+4FF     @INTERRUPT_AREA
+57F     @INTERRUPT_AREA
+5FF     @INTERRUPT_AREA
+67F     @INTERRUPT_AREA
+6FF     @INTERRUPT_AREA
+77F     @INTERRUPT_AREA
+7FF     @INTERRUPT_AREA
+87F     @INTERRUPT_AREA
+8FF     @INTERRUPT_AREA
+97F     @INTERRUPT_AREA
+9FF     @INTERRUPT_AREA
+A7F     @INTERRUPT_AREA
+AFF     @INTERRUPT_AREA
+B7F     @INTERRUPT_AREA
+BFF     @INTERRUPT_AREA
+C7F     @INTERRUPT_AREA
+CFF     @INTERRUPT_AREA
+D7F     @INTERRUPT_AREA
+DFF     @INTERRUPT_AREA
+E7F     @INTERRUPT_AREA
+EFF     @INTERRUPT_AREA
+F7F     @INTERRUPT_AREA
+FFF     @INTERRUPT_AREA
+
+ROM Allocation:
+00002F  @delay_ms1
+000043  Disparar
+000074  @goto10623
+000080  ext_isr
+000087  Cargar_configuracion
+000093  Configurar_interrupciones
+00009D  VariacionAnguloAplauso
+0000B7  MAIN
+0000B7  @cinit1
+0000C4  @cinit2
+
+Project Directory:
+    D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Dimmer\
+
+Project Files:
+    Dimmer.c                                                [14-jun-14 20:57  CRC=300BC1E7]
+    C:\Program Files (x86)\PICC\Devices\16f877a.h           [03-jul-13 21:28  CRC=4E65664C]
+
+Source signature=CCD68E7F
+
+Units:
+    Dimmer (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   Dimmer.xsym
+    Errors:      Dimmer.err
+    Ext Symbols: Dimmer.esym
+    INHX8:       Dimmer.hex
+    Symbols:     Dimmer.sym
+    List:        Dimmer.lst
+    Debug/COFF:  Dimmer.cof
+    Project:     Dimmer.ccspjt
+    Call Tree:   Dimmer.tre
+    Statistics:  Dimmer.STA

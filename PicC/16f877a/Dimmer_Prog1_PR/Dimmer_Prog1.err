@@ -1,0 +1,2 @@
+>>> Warning 206 "Dimmer_Prog1.c" Line 40(1,1): Variable of this data type is never greater than this constant
+>>> Warning 204 "Dimmer_Prog1.c" Line 40(1,1): Condition always FALSE

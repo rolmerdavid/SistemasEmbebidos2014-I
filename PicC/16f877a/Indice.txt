@@ -1,0 +1,5 @@
+Dimmer
+	//Dimmer controlado por pulso en PORTB1
+	
+luces_interrupcion
+	//pines PORTD controlados por interrupciones PORTB0

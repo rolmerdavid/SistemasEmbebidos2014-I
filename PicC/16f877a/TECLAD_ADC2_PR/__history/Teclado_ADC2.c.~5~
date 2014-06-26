@@ -1,0 +1,46 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+#USE delay(clock=10000000)
+#USE FAST_IO(B)   //Puerto B
+
+#INCLUDE "Bits.C"
+
+// **************************************
+// Declaracion de Funciones
+void Cargar_configuracion();
+void Configurar_interrupciones();
+void Iniciar_teclado();
+
+//***************************************
+
+
+
+// **************************************
+// Declaracion de las Interrupciones
+#INT_RB
+void  RB_isr(void) {
+   VER_TECLA();
+}
+#int_TIMER0
+void TIMER0_isr(void) {
+   set_timer0 (0x1B);      // Se recarga el TMR0  
+   //DAR_COL();
+   }
+//***************************************
+
+
+// **************************************
+// FUNCION PRINCIPAL
+void main()
+{
+   Cargar_configuracion();
+   Configurar_interrupciones();
+   while(TRUE)
+   {
+      Escribir_KEY();
+      delay_ms(50);
+   }
+
+}
+//***************************************
+

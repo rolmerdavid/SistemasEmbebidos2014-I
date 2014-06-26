@@ -1,0 +1,370 @@
+CCS PCM C Compiler, Version 5.008, 5967               13-abr-14 11:39
+
+               Filename:   D:\IGNACIO\Programacion\Microcontroladores\PicC\Dimmer_Prog1\Dimmer_Prog1.lst
+
+               ROM used:   225 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   19 (5%) at main() level
+                           23 (6%) worst case
+               Stack used: 4 locations (1 in main + 3 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0C4
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.4
+0018:  GOTO   01B
+0019:  BTFSC  0B.1
+001A:  GOTO   030
+001B:  BTFSS  0B.5
+001C:  GOTO   01F
+001D:  BTFSC  0B.2
+001E:  GOTO   033
+001F:  MOVF   22,W
+0020:  MOVWF  04
+0021:  MOVF   23,W
+0022:  MOVWF  77
+0023:  MOVF   24,W
+0024:  MOVWF  78
+0025:  MOVF   25,W
+0026:  MOVWF  79
+0027:  MOVF   26,W
+0028:  MOVWF  7A
+0029:  MOVF   20,W
+002A:  MOVWF  0A
+002B:  SWAPF  21,W
+002C:  MOVWF  03
+002D:  SWAPF  7F,F
+002E:  SWAPF  7F,W
+002F:  RETFIE
+0030:  BCF    0A.3
+0031:  BCF    0A.4
+0032:  GOTO   088
+0033:  BCF    0A.3
+0034:  BCF    0A.4
+0035:  GOTO   08F
+.................... #include <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+*
+007C:  BCF    0A.0
+007D:  BCF    0A.1
+007E:  BCF    0A.2
+007F:  ADDWF  02,F
+0080:  GOTO   051
+0081:  GOTO   053
+0082:  GOTO   058
+0083:  GOTO   05D
+0084:  GOTO   062
+0085:  GOTO   067
+0086:  GOTO   06C
+0087:  GOTO   071
+....................  
+.................... #list 
+....................  
+.................... #FUSES HS,NOWDT,NOPROTECT,NOLVP  
+.................... #USE delay(clock=10000000) 
+*
+0036:  MOVLW  31
+0037:  MOVWF  04
+0038:  BCF    03.7
+0039:  MOVF   00,W
+003A:  BTFSC  03.2
+003B:  GOTO   04A
+003C:  MOVLW  03
+003D:  MOVWF  78
+003E:  CLRF   77
+003F:  DECFSZ 77,F
+0040:  GOTO   03F
+0041:  DECFSZ 78,F
+0042:  GOTO   03E
+0043:  MOVLW  3C
+0044:  MOVWF  77
+0045:  DECFSZ 77,F
+0046:  GOTO   045
+0047:  GOTO   048
+0048:  DECFSZ 00,F
+0049:  GOTO   03C
+004A:  RETURN
+.................... #BYTE PORTD = 0x08   //Asignando PORTD 
+.................... #USE FAST_IO(B)   //Puerto B 
+.................... #USE FAST_IO(D)   //Puerto D 
+....................  
+.................... // Creacion de Variables 
+.................... int angulo = 0; 
+.................... int Portb1_ant = 0; 
+.................... int Portb1_now = 0; 
+.................... int Cristal = 10;          // es la frecuencia del cristal en MHz 
+.................... int Tiempo_espera = 1500;    // es el tiempo que se esperara en ms para poder entrar a la programacion del dimmer 
+.................... int Num_aplausos = 2;      // es el numero de aplausos que se necesitan para entrar a la programacion 
+.................... int estado_foco = 0;       // 1 = foco encendido --- 0 = foco apagado --- 2 = en programacion 
+.................... // Fin de Creacion de Variables 
+....................  
+.................... // ************************************** 
+.................... // Declaracion de Funciones 
+.................... void Cargar_configuracion(); 
+.................... void Configurar_interrupciones(); 
+.................... void VariacionAnguloAplauso (int incremento); 
+.................... void Disparar(int ang); 
+.................... // ************************************** 
+....................  
+.................... // ************************************** 
+.................... // Declaracion de las Interrupciones 
+.................... #INT_EXT       //Sentencias de la interrupcion RB0 
+.................... void ext_isr(){ 
+....................    Disparar(angulo); 
+*
+0088:  MOVF   27,W
+0089:  MOVWF  30
+008A:  GOTO   04B
+....................    } 
+....................     
+008B:  BCF    0B.1
+008C:  BCF    0A.3
+008D:  BCF    0A.4
+008E:  GOTO   01F
+.................... #INT_TIMER0      //Sentencias de la interrupcion TMR0 
+.................... void TIMER0_isr(void) { 
+....................    //output_toggle(PIN_D1); 
+....................    set_timer0 (0x1B); 
+008F:  MOVLW  1B
+0090:  MOVWF  01
+0091:  BCF    0B.2
+0092:  BCF    0A.3
+0093:  BCF    0A.4
+0094:  GOTO   01F
+....................    } 
+.................... // ************************************************** 
+....................  
+.................... // FUNCION PRINCIPAL 
+.................... void main() 
+*
+00C4:  MOVF   03,W
+00C5:  ANDLW  1F
+00C6:  MOVWF  03
+00C7:  CLRF   27
+00C8:  CLRF   28
+00C9:  CLRF   29
+00CA:  MOVLW  0A
+00CB:  MOVWF  2A
+00CC:  MOVLW  DC
+00CD:  MOVWF  2B
+00CE:  MOVLW  02
+00CF:  MOVWF  2C
+00D0:  CLRF   2D
+00D1:  BSF    03.5
+00D2:  BSF    1F.0
+00D3:  BSF    1F.1
+00D4:  BSF    1F.2
+00D5:  BCF    1F.3
+00D6:  MOVLW  07
+00D7:  MOVWF  1C
+00D8:  BCF    03.7
+.................... {   
+....................    Cargar_configuracion(); 
+00D9:  BCF    03.5
+00DA:  GOTO   095
+....................    Configurar_interrupciones(); 
+00DB:  GOTO   0A1
+....................        
+....................    while(true) 
+....................    {   
+....................       VariacionAnguloAplauso(1); 
+00DC:  MOVLW  01
+00DD:  MOVWF  2E
+00DE:  GOTO   0AA
+00DF:  GOTO   0DC
+....................    } 
+.................... } 
+....................  
+00E0:  SLEEP
+.................... // **************************************** 
+.................... // Definicion de las Funciones 
+....................  
+....................  
+....................  
+.................... void VariacionAnguloAplauso (int incremento){ 
+....................    // Portb1_ant y Portb1_now  fueron iniciados en 0 
+....................    if (input(PIN_B1) == 1){        //  verifica si el PORTB,1 es 1 
+*
+00AA:  BTFSS  06.1
+00AB:  GOTO   0B1
+....................          Portb1_ant = Portb1_now; 
+00AC:  MOVF   29,W
+00AD:  MOVWF  28
+....................          Portb1_now = 1; 
+00AE:  MOVLW  01
+00AF:  MOVWF  29
+....................       }else { 
+00B0:  GOTO   0B4
+....................          Portb1_ant = Portb1_now; 
+00B1:  MOVF   29,W
+00B2:  MOVWF  28
+....................          Portb1_now = 0; 
+00B3:  CLRF   29
+....................       } 
+....................     if (Portb1_ant == 0 && Portb1_now == 1){ 
+00B4:  MOVF   28,F
+00B5:  BTFSS  03.2
+00B6:  GOTO   0C1
+00B7:  DECFSZ 29,W
+00B8:  GOTO   0C1
+....................          if(angulo >= 7){ 
+00B9:  MOVF   27,W
+00BA:  SUBLW  06
+00BB:  BTFSC  03.0
+00BC:  GOTO   0BF
+....................             angulo = 0; 
+00BD:  CLRF   27
+....................          }else { 
+00BE:  GOTO   0C1
+....................             angulo = angulo + incremento; 
+00BF:  MOVF   2E,W
+00C0:  ADDWF  27,F
+....................          } 
+....................       } 
+00C1:  BCF    0A.3
+00C2:  BCF    0A.4
+00C3:  GOTO   0DF (RETURN)
+.................... } 
+....................  
+.................... void Cargar_configuracion(){ 
+....................    SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada 
+*
+0095:  MOVLW  FF
+0096:  BSF    03.5
+0097:  MOVWF  06
+....................    SET_TRIS_D(0x00);    //configura PORTD salida 
+0098:  MOVLW  00
+0099:  MOVWF  08
+....................    OUTPUT_D(0x00);   //inicializando PORTD en 0x00 
+009A:  BCF    03.5
+009B:  CLRF   08
+....................    angulo = 2;       // inicializando el angulo de dispario en 2ms 
+009C:  MOVLW  02
+009D:  MOVWF  27
+009E:  BCF    0A.3
+009F:  BCF    0A.4
+00A0:  GOTO   0DB (RETURN)
+.................... } 
+....................  
+.................... void Configurar_interrupciones(){ 
+....................    enable_interrupts(INT_EXT);   // habilitar interrupcion del RB0 /INTE 
+00A1:  BSF    0B.4
+....................    ext_int_edge(L_TO_H);         // Flag INTF si flanco de bajada / H_TO_L bajada     
+00A2:  BSF    03.5
+00A3:  BSF    01.6
+....................    enable_interrupts(GLOBAL); 
+00A4:  MOVLW  C0
+00A5:  BCF    03.5
+00A6:  IORWF  0B,F
+00A7:  BCF    0A.3
+00A8:  BCF    0A.4
+00A9:  GOTO   0DC (RETURN)
+.................... } 
+....................  
+.................... void Disparar(int ang){ 
+....................    switch (ang){ 
+*
+004B:  MOVF   30,W
+004C:  ADDLW  F8
+004D:  BTFSC  03.0
+004E:  GOTO   075
+004F:  ADDLW  08
+0050:  GOTO   07C
+....................       case 0 :  
+....................                bit_set(PORTD,0); 
+0051:  BSF    08.0
+....................          break; 
+0052:  GOTO   075
+....................       case 1 : delay_ms(1); 
+0053:  MOVLW  01
+0054:  MOVWF  31
+0055:  CALL   036
+....................                bit_set(PORTD,0); 
+0056:  BSF    08.0
+....................          break; 
+0057:  GOTO   075
+....................       case 2 : delay_ms(2); 
+0058:  MOVLW  02
+0059:  MOVWF  31
+005A:  CALL   036
+....................                bit_set(PORTD,0); 
+005B:  BSF    08.0
+....................          break; 
+005C:  GOTO   075
+....................       case 3 : delay_ms(3); 
+005D:  MOVLW  03
+005E:  MOVWF  31
+005F:  CALL   036
+....................                bit_set(PORTD,0); 
+0060:  BSF    08.0
+....................          break; 
+0061:  GOTO   075
+....................       case 4 : delay_ms(4); 
+0062:  MOVLW  04
+0063:  MOVWF  31
+0064:  CALL   036
+....................                bit_set(PORTD,0); 
+0065:  BSF    08.0
+....................          break; 
+0066:  GOTO   075
+....................       case 5 : delay_ms(5); 
+0067:  MOVLW  05
+0068:  MOVWF  31
+0069:  CALL   036
+....................                bit_set(PORTD,0); 
+006A:  BSF    08.0
+....................          break; 
+006B:  GOTO   075
+....................       case 6 : delay_ms(6); 
+006C:  MOVLW  06
+006D:  MOVWF  31
+006E:  CALL   036
+....................                bit_set(PORTD,0); 
+006F:  BSF    08.0
+....................          break; 
+0070:  GOTO   075
+....................       case 7 : delay_ms(7); 
+0071:  MOVLW  07
+0072:  MOVWF  31
+0073:  CALL   036
+....................                bit_set(PORTD,0); 
+0074:  BSF    08.0
+....................          break; 
+....................    } 
+....................       delay_ms(1); 
+0075:  MOVLW  01
+0076:  MOVWF  31
+0077:  CALL   036
+....................       bit_clear(PORTD,0); 
+0078:  BCF    08.0
+0079:  BCF    0A.3
+007A:  BCF    0A.4
+007B:  GOTO   08B (RETURN)
+.................... } 
+.................... //***************************************** 
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

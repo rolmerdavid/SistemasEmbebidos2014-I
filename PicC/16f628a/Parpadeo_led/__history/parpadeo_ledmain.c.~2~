@@ -1,0 +1,8 @@
+#include <16F628A.h>
+
+#FUSES HS,NOWDT,NOPROTECT,NOLVP
+#USE delay(internal=4000000)
+#BYTE PORTA = 0x05   //Asignando PORTD
+#USE FAST_IO(B)   //Puerto B
+#USE FAST_IO(A)   //Puerto D
+

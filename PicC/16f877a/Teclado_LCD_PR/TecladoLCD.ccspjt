@@ -1,0 +1,22 @@
+[PROJECT]
+Target=TecladoLCD.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=TecladoLCD.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_LCD_PR\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_LCD\TecladoLCD]
+Type=4
+[mru-list]
+1=TecladoLCD.c
+[Opened Files]
+1=TecladoLCD.c
+2=
+[TecladoLCD.c]
+Type=4
+[Units]
+Count=1
+1=TecladoLCD (main)

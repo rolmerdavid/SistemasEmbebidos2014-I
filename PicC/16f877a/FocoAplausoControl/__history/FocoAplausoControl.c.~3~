@@ -1,0 +1,16 @@
+#include <16F877A.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+
+#USE delay(crystal=10000000)
+
+
+
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

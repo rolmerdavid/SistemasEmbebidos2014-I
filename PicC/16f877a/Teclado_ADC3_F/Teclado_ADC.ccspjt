@@ -1,0 +1,22 @@
+[PROJECT]
+Target=Teclado_ADC.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=Teclado_ADC.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_ADC\;D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_ADC_PR\;D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_ADC3_PR\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_ADC\Teclado_ADC]
+Type=4
+[mru-list]
+1=Teclado_ADC.c
+[Opened Files]
+1=Teclado_ADC.c
+2=
+[Teclado_ADC.c]
+Type=4
+[Units]
+Count=1
+1=Teclado_ADC (main)

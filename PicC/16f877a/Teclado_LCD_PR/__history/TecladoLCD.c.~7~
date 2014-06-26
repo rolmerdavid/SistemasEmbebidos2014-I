@@ -1,0 +1,46 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP  
+#USE delay(crystal=10000000)       // Definiendo cristal de 10MHz
+#USE FAST_IO(B)   //Puerto B
+#include <lcd.c>
+
+// **************************************
+// Creacion de Variables
+
+
+//***************************************
+
+
+
+// **************************************
+// Declaracion de Funciones
+void Cargar_configuracion();
+void Configurar_interrupciones();
+
+//***************************************
+
+
+// **************************************
+// Declaracion de las Interrupciones
+#INT_RB
+void  RB_isr(void) {
+
+}
+//***************************************
+
+
+
+void main()
+{
+
+   enable_interrupts(INT_RB);
+   enable_interrupts(GLOBAL);
+
+   lcd_init();
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

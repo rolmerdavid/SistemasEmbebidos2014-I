@@ -1,0 +1,176 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+#USE delay(clock=10000000)
+#USE FAST_IO(B)   //Puerto B
+
+#INCLUDE "Bits.C"
+#INCLUDE "LCD.C"
+#BYTE PORTB = 0x06
+#BIT   RBPU=0x81.7                     // Bit habilitacion del PullUp del PORTB
+
+
+// **************************************
+// Creacion de Variables
+int      Btemp;
+int      Btt;
+int      COD;
+int      c;
+int conta_t = 0;
+int   tecla,teclanew = 0;
+//int   const tabla_tecla[17]={0xD7,0xEE,0xDE,0xBE,0xED,0xDD,0xBD,0xEB,0xDB,0xBB,0xE7,0xB7,0x77,0x7B,0x7D,0x7E,0x80};
+//int   const tabla_ascii[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+//***************************************
+
+
+// **************************************
+// Declaracion de Funciones
+void Cargar_configuracion();
+void Configurar_interrupciones();
+void Escribir_KEY();
+void ConvTecla ();
+//***************************************
+
+
+
+// **************************************
+// Declaracion de las Interrupciones
+#INT_RB
+void  RB_isr(void) {
+      Btt=PORTB;
+      if(bit_var(Btt,4)==0){
+         COD=0xE0;
+         COD|=(Btt&0x0F);
+         teclanew = 1;
+         }
+      if(bit_var(Btt,5)==0){
+         COD=0xD0;
+         COD|=(Btt&0x0F);
+         teclanew = 1;
+         }
+      if(bit_var(Btt,6)==0){
+         COD=0xB0;
+         COD|=(Btt&0x0F);
+         teclanew = 1;
+         }
+      if(bit_var(Btt,7)==0){
+         COD=0x70;
+         COD|=(Btt&0x0F);
+         teclanew = 1;
+         }
+}
+#int_TIMER0
+void TIMER0_isr(void) {
+   set_timer0 (0x00);      // Se recarga el TMR0  
+   conta_t++;
+
+      Btemp=PORTB;
+         PORTB=0X0E;
+         delay_ms(10);
+          PORTB=0X0D;
+         delay_ms(10);
+          PORTB=0X0B;
+         delay_ms(10);
+          PORTB=0X07;
+         delay_ms(10);
+
+   }
+//***************************************
+
+
+// **************************************
+// FUNCION PRINCIPAL
+void main()
+{
+   Cargar_configuracion();
+   Configurar_interrupciones();
+   while(TRUE)
+   {
+      Escribir_KEY();
+      delay_ms(50);
+   }
+
+}
+//***************************************
+
+
+// **************************************
+// Definicion de funciones
+
+void Cargar_configuracion(){
+   SET_TRIS_B(0xF0);    //configura PORTB entrada / 0=salida / 1=entrada
+   SET_TRIS_D(0x00);    //configura PORTD salida
+   lcd_init();
+   c=0;
+
+}
+
+void Configurar_interrupciones(){
+   setup_timer_0(RTCC_INTERNAL|RTCC_DIV_2);   //Configuración timer0
+   set_timer0 (0x1B);                    //Carga del timer0
+   enable_interrupts(INT_TIMER0);       //Habilita interrupción timer0
+
+   enable_interrupts(INT_RB);       // Habilitando interrupcion RB /RB4-RB7
+   //bit_clear(OPTION_REG,7);         // Habilita el Pull-UP de RB->OPTION_REG,RBPU
+   RBPU=0;                            // Habilita el PullUP de RB 
+   enable_interrupts(GLOBAL);       // Habilita las interrupciones
+}
+
+void Escribir_KEY(){
+   if (teclanew == 1){
+         ConvTecla ();
+         lcd_putc(tecla);
+         teclanew=0;
+   }
+}
+
+void ConvTecla (){
+   if(COD==0XEE){
+       tecla = "7";         
+      }
+   if(COD==0XED){
+      tecla = "4";            
+      }
+   if(COD==0XEB){
+      tecla = "1";            
+      }
+   if(COD==0XE7){
+      tecla = "/";         
+      }
+   if(COD==0XDE){
+      tecla = "8";            
+      }
+   if(COD==0XDD){
+      tecla = "5";            
+      }
+   if(COD==0XDB){
+      tecla = "2";            
+      }
+   if(COD==0XD7){
+      tecla = "0";      
+      }
+   if(COD==0XBE){
+      tecla = "9";         
+      }
+   if(COD==0XBD){
+      tecla = "6";            
+      }
+   if(COD==0XBB){
+      tecla = "3";            
+      }
+   if(COD==0XB7){
+      tecla = "E";         
+      }
+   if(COD==0X7E){
+      tecla = "A";            
+      }
+   if(COD==0X7D){
+      tecla = "B";         
+      }
+   if(COD==0X7B){
+      tecla = "C";            
+      }
+   if(COD==0X77){
+      tecla = "D";            
+      }
+}
+

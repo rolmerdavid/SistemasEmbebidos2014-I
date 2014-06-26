@@ -1,0 +1,33 @@
+#include <16f877a.h>
+#fuses HS,NOWDT,NOPROTECT,NOLVP 
+#use delay(clock=10000000)
+
+#use FAST_IO(B)   //Puerto B 
+#use FAST_IO(D)   //Puerto D
+
+#INT_EXT       //Sentencias de la interrupcion RB0
+ext_isr(){
+   
+}
+
+
+void main()
+{
+   SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada
+   SET_TRIS_D(0x00);    //configura PORTD salida
+
+   while(true)
+   {
+      enable_interrupts(INT_EXT);   // habilitar interrupcion del RB0 /INTE
+      ext_int_edge(H_TO_L);         // Flag INTF si flanco de bajada / L_TO_H subida
+      enable_interrupts(GLOBAL);
+      
+      if (input(PIN_B0) == 1 ){
+         OUTPUT_D(0x00);
+      }else {
+         OUTPUT_D(0xFF);
+      }
+   }
+
+}
+

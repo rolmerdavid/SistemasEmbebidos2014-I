@@ -1,0 +1,37 @@
+ÀÄTeclado_LCD
+   ÀÄMAIN  0/51  Ram=2
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄlcd_init  0/44  Ram=2
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_send_nibble  0/17  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_send_nibble  0/17  Ram=1
+      ³  ÃÄ@const629  0/8  Ram=0
+      ³  ÀÄlcd_send_byte  0/60  Ram=3
+      ³     ÃÄlcd_read_byte  (Inline)  Ram=3
+      ³     ÃÄlcd_send_nibble  0/17  Ram=1
+      ³     ÀÄlcd_send_nibble  0/17  Ram=1
+      ÃÄteclado  0/77  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄ@const659  0/21  Ram=0
+      ³  ÃÄ@const662  0/20  Ram=0
+      ³  ÀÄ@delay_ms1  0/20  Ram=1
+      ÃÄlcd_putc  0/52  Ram=1
+      ³  ÃÄlcd_send_byte  0/60  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_gotoxy  (Inline)  Ram=4
+      ³  ³  ÀÄlcd_send_byte  0/60  Ram=3
+      ³  ³     ÀÄ*
+      ³  ÃÄlcd_send_byte  0/60  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_send_byte  0/60  Ram=3
+      ³     ÀÄ*
+      ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄ@PSTRINGC7_650  0/75  Ram=4
+      ³  ÃÄlcd_putc  0/52  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_putc  0/52  Ram=1
+      ³     ÀÄ*
+      ÀÄ@PSTRINGC7_650  0/75  Ram=4
+         ÀÄ*

@@ -1,0 +1,85 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+#USE delay(clock=10000000)
+#USE FAST_IO(B)   //Puerto B
+
+#INCLUDE "Bits.C"
+#BYTE PORTB = 0x06
+
+
+// **************************************
+// Creacion de Variables
+unsigned short    Btemp;
+unsigned short    Btt;
+unsigned short    COD;
+unsigned short  c;
+int   tecla_temp,tecla,i,teclanew;
+int   const tabla_tecla[17]={0xD7,0xEE,0xDE,0xBE,0xED,0xDD,0xBD,0xEB,0xDB,0xBB,0xE7,0xB7,0x77,0x7B,0x7D,0x7E,0x80};
+int   const tabla_ascii[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+//***************************************
+
+
+// **************************************
+// Declaracion de Funciones
+void Cargar_configuracion();
+void Configurar_interrupciones();
+void Iniciar_teclado();
+
+//***************************************
+
+
+
+// **************************************
+// Declaracion de las Interrupciones
+#INT_RB
+void  RB_isr(void) {
+      if(bit_var(Btt,4)==0){
+         COD=0XE0;
+         COD|=(Btt&0x0F);
+         }
+      if(bit_var(Btt,5)==0){
+         COD=0XD0;
+         COD|=(Btt&0x0F);
+         }
+      if(bit_var(Btt,6)==0){
+         COD=0XB0;
+         COD|=(Btt&0x0F);
+         }
+      if(bit_var(Btt,7)==0){
+         COD=0X70;
+         COD|=(Btt&0x0F);
+         }
+}
+#int_TIMER0
+void TIMER0_isr(void) {
+   set_timer0 (0x1B);      // Se recarga el TMR0  
+   //DAR_COL();
+   Btemp=PORTB;
+      PORTB=0X0E;
+      __delay_ms(10);
+       PORTB=0X0D;
+      __delay_ms(10);
+       PORTB=0X0B;
+      __delay_ms(10);
+       PORTB=0X07;
+      __delay_ms(10);
+   
+   }
+//***************************************
+
+
+// **************************************
+// FUNCION PRINCIPAL
+void main()
+{
+   Cargar_configuracion();
+   Configurar_interrupciones();
+   while(TRUE)
+   {
+      Escribir_KEY();
+      delay_ms(50);
+   }
+
+}
+//***************************************
+

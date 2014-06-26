@@ -1,0 +1,16 @@
+[PROJECT]
+Target=D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\ConversorADC\ConversorADC.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+[Target Data]
+FileList=ConversorADC.c
+[Directories]
+Include=
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\ConversorADC\ConversorADC]
+Type=4
+[mru-list]
+1=ConversorADC.c
+[Units]
+Count=1
+1=ConversorADC (main)

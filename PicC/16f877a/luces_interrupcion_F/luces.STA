@@ -1,0 +1,49 @@
+
+ROM used:   82/8192 (1%)
+            82/8192 (1%) including unused fragments
+
+            0.1 Average locations per line
+            6.3 Average locations per statement
+
+RAM used:   12/368 (3%) at main() level
+            13/368 (4%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   36    13 100  luces.c
+  661     0   0  C:\Program Files (x86)\PICC\Devices\16f877a.h
+----- -----
+  697    13 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     10  12    1    78  2.3  ext_isr
+0     25  30    0   127  1.7  MAIN
+ Inline         0   300  4.6  @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              13
+    Comments                116
+    Volume (V)              662
+    Difficulty (D)          8.8
+    Effort to implement (E) 5825
+    Time to implement (T)   5 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   4
+    Maintainability (MI)    109
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-0002E    43  0  
+0002F-007FF    35  1966  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

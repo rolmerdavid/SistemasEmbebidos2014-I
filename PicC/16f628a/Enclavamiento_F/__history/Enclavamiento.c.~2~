@@ -1,0 +1,14 @@
+#include <16F628A.h>
+
+#FUSES HS,NOWDT,NOPROTECT,NOLVP
+#use delay(internal=4000000)
+
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

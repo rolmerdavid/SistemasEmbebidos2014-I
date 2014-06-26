@@ -1,0 +1,22 @@
+[PROJECT]
+Target=parpadeo_ledmain.hex
+Processor_Text=PIC16F628A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=parpadeo_ledmain.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\16f628a\Parpadeo_led\parpadeo_ledmain]
+Type=4
+[mru-list]
+1=parpadeo_ledmain.c
+[Opened Files]
+1=parpadeo_ledmain.c
+2=
+[parpadeo_ledmain.c]
+Type=4
+[Units]
+Count=1
+1=parpadeo_ledmain (main)

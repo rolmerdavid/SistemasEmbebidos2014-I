@@ -1,0 +1,17 @@
+ÀÄDimmer
+   ÃÄMAIN  0/22  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄCargar_configuracion  0/12  Ram=0
+   ³  ÃÄConfigurar_interrupciones  0/10  Ram=0
+   ³  ÀÄVariacionAnguloAplauso  0/26  Ram=2
+   ÀÄext_isr  0/7  Ram=0
+      ÀÄDisparar  0/49  Ram=1
+         ÃÄ@goto10623  0/12  Ram=0
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÀÄ@delay_ms1  0/20  Ram=1

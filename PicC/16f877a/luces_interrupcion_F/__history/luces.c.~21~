@@ -1,0 +1,24 @@
+#include <16f877a.h>
+#fuses xt,nowdt
+#use delay(clock=4000000)
+
+//Declaracion de variables globales
+#define Led pin_b0//Nombra a pin_b0 como Led
+#define Retardo delay_ms(500)//Nombra a delay_ms() como Retardo
+
+
+//Programa principal
+void main(){
+
+//Configuracion de puertos E/S 
+SET_TRIS_B(0x00);//Configura el puerto B: 0=Salida; 1=Entrada
+output_b(0x00); //Limpia el registro del puerto
+
+//Estructura Programa principal
+inicio://Etiqueta de retorno
+output_high(led);//Pone en alto a led
+retardo;//Demora
+output_low(led);//Pone en bajo a led
+retardo;//Demora
+goto inicio;//Regresa a la etiqueta inicio
+}

@@ -1,0 +1,122 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP
+#DEVICE ADC=10                // Resolucion del ADC 10bits
+
+#USE delay(clock=20000000)
+
+
+#BYTE   tecla_port=0x06
+#BIT   rbif=0x0B.0
+#BIT   rbpu=0x81.7
+#INCLUDE "LCD.C"
+
+// Declaracion de variables
+int   tecla_temp,tecla,i,cont;
+int   const tabla_tecla[17]={0xD7,0xEE,0xDE,0xBE,0xED,0xDD,0xBD,0xEB,0xDB,0xBB,0xE7,0xB7,0x77,0x7B,0x7D,0x7E,0x80};
+int   const tabla_ascii[16]={'0','1','2','3','4','5','6','7','8','9','*','#','D','C','B','A'};
+float m,lectura;
+unsigned long n;
+//*************************************************
+
+// ************************************************
+// Declaracion de la funcion
+int teclado();
+void lect_adc(int canal);
+//*************************************************
+
+// ************************************************
+// Funcion Principal
+void main()
+{
+   cont = 0;
+   setup_adc_ports(AN0_AN1_AN3);
+   setup_adc(adc_clock_div_32);
+   lcd_init();
+
+      while(TRUE)
+         {
+            m=teclado();
+            if(m!=0)
+            {
+            lcd_putc("\f");
+            if(m==49){
+            lect_adc(0);}
+            else if(m==50){
+            lect_adc(1);}
+            else {
+            printf(lcd_putc,"Tecla invalida");
+            }
+            delay_ms(50);
+            }
+          }  
+}
+
+
+// ***********************************************
+// Definicion de las variables
+   int teclado()
+   {
+      
+      set_tris_b(0xF0);
+      do
+      {
+         do
+         {
+            tecla_port=0xF0;
+            rbpu=0;
+            rbif=0;
+            i=1;
+            while(rbif==0){}
+            delay_ms(30);
+            tecla_temp=0xFE;
+            do
+            {
+               tecla_port=tecla_temp;
+               tecla=tecla_temp;
+               tecla_temp=(tecla_temp<<1)+1;
+               i++;
+            }while((i<=4) && (tecla_port==tecla));
+         }while(tecla_port==tecla);
+         tecla=tecla_port;
+         i=0;
+         while((tabla_tecla[i]!=tecla) && (i<16))
+         {
+            i++;
+         }
+      }while(i==16);      
+      tecla=tabla_ascii[i];
+      rbif=0;
+      while(rbif==0){}
+      delay_ms(30);
+      return(tecla);
+}
+
+   void lect_adc(int canal){
+   if (canal == 0){
+   set_adc_channel(0);//CONVIERTE CANAL 0
+   } else if(canal==1){
+   set_adc_channel(1);//CONVIERTE CANAL 0
+   } else {
+   set_adc_channel(0);//CONVIERTE CANAL 0
+   }
+   
+   for(int i=0; i<50; i++){
+   n=read_adc();
+   lectura = n*5.0/1023.0;
+   delay_ms(10);
+   printf(lcd_putc,"ADC%i : %lu",canal,n);
+   lcd_putc("\n");
+   printf(lcd_putc,"ADC%i : %f",canal,lectura);
+   cont++;
+   
+   delay_ms(100);
+   lcd_putc("\f");
+   }
+   printf(lcd_putc,"Lectura\nfinalizada");
+   delay_ms(500);
+   lcd_putc("\f");
+   printf(lcd_putc,"Ingrese nuevo\ncanal");
+   
+}
+
+//*********************************************

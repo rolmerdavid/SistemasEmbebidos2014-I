@@ -1,0 +1,183 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+006     tecla_port
+008     lcd
+008     PSP_DATA
+00B.0   rbif
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     tecla_temp
+021     tecla
+022     i
+023     cont
+024-027 m
+028-02B lectura
+02C-02D n
+02E     lect_adc.canal
+02E-031 @FLT.P1
+02E     lcd_init.i
+02E     teclado.@SCRATCH1
+02F     lect_adc.i
+02F     lcd_init.@SCRATCH1
+030-031 @PRINTF_LU_650.P1
+030     @PRINTF_D_650.P2
+030-033 @PRINTF_L32D_650FPFPF.P3
+030-031 @ITOF.P4
+030     @PSTRINGC7_650.@SCRATCH1
+030     lect_adc.@SCRATCH1
+031     @PRINTF_D_650.P1
+031     @PSTRINGC7_650.@SCRATCH2
+031     lect_adc.@SCRATCH2
+032-035 @FLT.P1
+032     @PSTRINGC7_650.@SCRATCH3
+032     lect_adc.@SCRATCH3
+032     @PRINTF_D_650.@SCRATCH1
+032     @PRINTF_LU_650.@SCRATCH1
+033     @PSTRINGC7_650.@SCRATCH4
+033     lect_adc.@SCRATCH4
+033     @PRINTF_D_650.@SCRATCH2
+033     @PRINTF_LU_650.@SCRATCH2
+034-037 @DIVFF.P1
+034     @PRINTF_L32D_650FPFPF.P2
+034     @PRINTF_D_650.@SCRATCH3
+034     @PRINTF_LU_650.@SCRATCH3
+035     @PRINTF_D_650.@SCRATCH4
+035     @PRINTF_LU_650.@SCRATCH4
+035     @PRINTF_L32D_650FPFPF.@SCRATCH1
+036     @DIV88.P1
+036     @FLT.@SCRATCH1
+036     @PRINTF_LU_650.@SCRATCH5
+036     @PRINTF_L32D_650FPFPF.@SCRATCH2
+037     @DIV88.P1
+037     @FLT.@SCRATCH2
+037     @PRINTF_LU_650.@SCRATCH6
+037     @PRINTF_L32D_650FPFPF.@SCRATCH3
+038-03B @DIVFF.P1
+038     @DIV88.@SCRATCH1
+038     @PRINTF_LU_650.@SCRATCH7
+038     @PRINTF_L32D_650FPFPF.@SCRATCH4
+039     @PRINTF_L32D_650FPFPF.@SCRATCH5
+03A     @PRINTF_L32D_650FPFPF.@SCRATCH6
+03B     @PRINTF_L32D_650FPFPF.@SCRATCH7
+03C     @DIVFF.@SCRATCH1
+03C     @PRINTF_L32D_650FPFPF.@SCRATCH8
+03D-040 @DIV3232.P1
+03D-040 @MULFF.P2
+03D-040 @FTOSD.P3
+03D     lcd_putc.c
+03D     @DIVFF.@SCRATCH2
+03E     @delay_ms1.P1
+03E     lcd_gotoxy.x
+03E     @DIVFF.@SCRATCH3
+03F     lcd_gotoxy.y
+03F     @DIVFF.@SCRATCH4
+040     lcd_gotoxy.address
+040     @DIVFF.@SCRATCH5
+041-044 @DIV3232.P1
+041-044 @MULFF.P2
+041     lcd_gotoxy.@SCRATCH1
+041     @DIVFF.@SCRATCH6
+041     @FTOSD.@SCRATCH1
+042     lcd_send_byte.address
+043     lcd_send_byte.n
+044     lcd_read_byte.low
+044     lcd_send_byte.@SCRATCH1
+045     lcd_read_byte.high
+045     lcd_send_nibble.n
+045     @MULFF.@SCRATCH1
+045     @DIV3232.@SCRATCH1
+046     lcd_read_byte.@SCRATCH1
+046     @MULFF.@SCRATCH2
+046     @DIV3232.@SCRATCH2
+047     @MULFF.@SCRATCH3
+047     @DIV3232.@SCRATCH3
+048     @MULFF.@SCRATCH4
+048     @DIV3232.@SCRATCH4
+049     @MULFF.@SCRATCH5
+049     @DIV3232.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+081.7   rbpu
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  LCD_INIT_STRING.call
+000008  LCD_INIT_STRING.data
+00000C  tabla_tecla.call
+000010  tabla_tecla.data
+000021  tabla_ascii.call
+000025  tabla_ascii.data
+000035  @const675.call
+00003C  @const682.call
+00003D  @const683.call
+000045  @const700.call
+000046  @const710.call
+000047  @const711.call
+000051  @const712.call
+000052  @const713.call
+00005C  @delay_ms1
+000070  lcd_send_nibble
+000081  lcd_send_byte
+000082  lcd_read_byte
+0000BD  lcd_init
+0000E9  lcd_putc
+000100  lcd_gotoxy
+00011D  @PSTRINGC7_650
+000168  teclado
+0001B5  @ITOF
+0001D2  @FLT
+000211  @MULFF
+000286  @DIV88
+00029B  @PRINTF_D_650
+0002F2  @DIV3232
+000341  @PRINTF_L32D_650FPFPF
+000368  @FTOSD
+000423  lect_adc
+000475  @DIVFF
+000566  @PRINTF_LU_650
+00061D  @cinit1
+00061D  MAIN
+000627  @cinit2
+
+Project Directory:
+    D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_ADC3_PR\
+
+Project Files:
+    Teclado_ADC.c                                           [19-jun-14 13:32  CRC=9AE4C891]
+    C:\Program Files (x86)\PICC\Devices\16f877a.h           [03-jul-13 21:28  CRC=4E65664C]
+    LCD.C                                                   [05-sep-07 09:54  CRC=EE70690B]
+
+Source signature=C62B00F3
+
+Units:
+    Teclado_ADC (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   Teclado_ADC.xsym
+    Errors:      Teclado_ADC.err
+    Ext Symbols: Teclado_ADC.esym
+    INHX8:       Teclado_ADC.hex
+    Symbols:     Teclado_ADC.sym
+    List:        Teclado_ADC.lst
+    Debug/COFF:  Teclado_ADC.cof
+    Project:     Teclado_ADC.ccspjt
+    Call Tree:   Teclado_ADC.tre
+    Statistics:  Teclado_ADC.STA

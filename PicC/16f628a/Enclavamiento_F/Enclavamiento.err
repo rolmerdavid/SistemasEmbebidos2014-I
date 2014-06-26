@@ -1,0 +1,4 @@
+>>> Warning 216 "Enclavamiento.c" Line 104(1,2): Interrupts disabled during call to prevent re-entrancy:  (Variar_led)
+      Memory usage:   ROM=9%      RAM=7% - 8%
+      0 Errors,  1 Warnings.
+Build Successful.

@@ -1,0 +1,70 @@
+CCS PCM C Compiler, Version 5.008, 5967               17-abr-14 22:16
+
+               Filename:   D:\IGNACIO\Programacion\Microcontroladores\PicC\16f628a\Parpadeo_led\parpadeo_ledmain.lst
+
+               ROM used:   27 words (1%)
+                           Largest free fragment is 2021
+               RAM used:   6 (3%) at main() level
+                           6 (3%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <16F628A.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+....................  
+.................... #list 
+....................  
+....................  
+.................... #FUSES HS,NOWDT,NOPROTECT,NOLVP 
+.................... #USE delay(internal=4000000) 
+.................... #USE FAST_IO(B)   //Puerto B 
+.................... #USE FAST_IO(A)   //Puerto D 
+....................  
+....................  
+.................... void main() 
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  BSF    03.5
+0008:  BSF    0E.3
+0009:  MOVLW  07
+000A:  BCF    03.5
+000B:  MOVWF  1F
+000C:  BCF    03.7
+.................... { 
+....................    SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada 
+000D:  MOVLW  FF
+000E:  BSF    03.5
+000F:  MOVWF  06
+....................    SET_TRIS_A(0x00);    //configura PORTD salida   
+0010:  MOVLW  00
+0011:  MOVWF  05
+....................    OUTPUT_A(0x00);   //inicializando PORTD en 0x00 
+0012:  BCF    03.5
+0013:  CLRF   05
+....................        
+....................    while(true) 
+....................    { 
+....................       if (input(PIN_B1) == 1 ){ 
+0014:  BTFSS  06.1
+0015:  GOTO   018
+....................          output_low(PIN_A0);   //establece la salida del PORTD 
+0016:  BCF    05.0
+....................       }else { 
+0017:  GOTO   019
+....................          output_high(PIN_A0); 
+0018:  BSF    05.0
+....................       } 
+0019:  GOTO   014
+....................    } 
+.................... } 
+001A:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F70   NOWDT PUT INTRC_IO MCLR BROWNOUT NOLVP NOCPD NOPROTECT

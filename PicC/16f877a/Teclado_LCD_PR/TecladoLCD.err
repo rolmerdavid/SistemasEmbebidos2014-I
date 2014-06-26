@@ -1,0 +1,4 @@
+>>> Warning 216 "TecladoLCD.c" Line 136(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+      Memory usage:   ROM=5%      RAM=5% - 8%
+      0 Errors,  1 Warnings.
+Build Successful.

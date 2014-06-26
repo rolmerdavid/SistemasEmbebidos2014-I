@@ -1,0 +1,22 @@
+[PROJECT]
+Target=TECLADO.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=TECLADO.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\TECLADO1_PR\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\TECLADO1_PR\TECLADO]
+Type=4
+[mru-list]
+1=TECLADO.c
+[Opened Files]
+1=TECLADO.c
+2=
+[TECLADO.c]
+Type=4
+[Units]
+Count=1
+1=TECLADO (main)

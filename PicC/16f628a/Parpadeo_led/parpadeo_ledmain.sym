@@ -1,0 +1,49 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+021     main.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+000004  main
+000004  @cinit1
+00000C  @cinit2
+
+Project Directory:
+    D:\IGNACIO\Programacion\Microcontroladores\PicC\16f628a\Parpadeo_led\
+
+Project Files:
+    parpadeo_ledmain.c                                      [17-abr-14 22:15  CRC=3F087D3A]
+    C:\Program Files (x86)\PICC\Devices\16F628A.h           [03-jul-13 21:28  CRC=FEBF88CA]
+
+Source signature=3C878ECE
+
+Units:
+    parpadeo_ledmain (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   parpadeo_ledmain.xsym
+    Errors:      parpadeo_ledmain.err
+    Ext Symbols: parpadeo_ledmain.esym
+    INHX8:       parpadeo_ledmain.hex
+    Symbols:     parpadeo_ledmain.sym
+    List:        parpadeo_ledmain.lst
+    Debug/COFF:  parpadeo_ledmain.cof
+    Project:     parpadeo_ledmain.ccspjt
+    Call Tree:   parpadeo_ledmain.tre
+    Statistics:  parpadeo_ledmain.STA

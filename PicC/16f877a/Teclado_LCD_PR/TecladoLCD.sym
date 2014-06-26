@@ -1,0 +1,140 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+006     tecla_port
+008     lcd
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     tecla_temp
+029     tecla
+02A     i
+02B     teclanew
+02C     lcd_putc.c
+02C     lcd_init.i
+02D     lcd_gotoxy.x
+02D     lcd_init.@SCRATCH1
+02E     lcd_gotoxy.y
+02F     lcd_gotoxy.address
+030     lcd_gotoxy.@SCRATCH1
+031     lcd_send_byte.address
+032     lcd_send_byte.n
+033     lcd_read_byte.low
+033     lcd_send_byte.@SCRATCH1
+034     lcd_read_byte.high
+034     lcd_send_nibble.n
+035     lcd_read_byte.@SCRATCH1
+036     @delay_ms1.P1
+036     VER_TECLA.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07F     @INTERRUPT_AREA
+081.7   RBPU
+09C.6   C1OUT
+09C.7   C2OUT
+0FF     @INTERRUPT_AREA
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+17F     @INTERRUPT_AREA
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+2FF     @INTERRUPT_AREA
+37F     @INTERRUPT_AREA
+3FF     @INTERRUPT_AREA
+47F     @INTERRUPT_AREA
+4FF     @INTERRUPT_AREA
+57F     @INTERRUPT_AREA
+5FF     @INTERRUPT_AREA
+67F     @INTERRUPT_AREA
+6FF     @INTERRUPT_AREA
+77F     @INTERRUPT_AREA
+7FF     @INTERRUPT_AREA
+87F     @INTERRUPT_AREA
+8FF     @INTERRUPT_AREA
+97F     @INTERRUPT_AREA
+9FF     @INTERRUPT_AREA
+A7F     @INTERRUPT_AREA
+AFF     @INTERRUPT_AREA
+B7F     @INTERRUPT_AREA
+BFF     @INTERRUPT_AREA
+C7F     @INTERRUPT_AREA
+CFF     @INTERRUPT_AREA
+D7F     @INTERRUPT_AREA
+DFF     @INTERRUPT_AREA
+E7F     @INTERRUPT_AREA
+EFF     @INTERRUPT_AREA
+F7F     @INTERRUPT_AREA
+FFF     @INTERRUPT_AREA
+
+ROM Allocation:
+000036  LCD_INIT_STRING.call
+00003A  LCD_INIT_STRING.data
+00003E  tabla_tecla.call
+000042  tabla_tecla.data
+000053  tabla_ascii.call
+000057  tabla_ascii.data
+000067  @delay_ms1
+00007C  VER_TECLA
+00007C  RB_isr
+0000B8  TIMER0_isr
+0000BE  @const675.call
+0000C3  @const677.call
+0000CB  lcd_send_nibble
+0000D9  lcd_send_byte
+0000DA  lcd_read_byte
+000113  Cargar_configuracion
+000113  lcd_init
+00014B  Configurar_interrupciones
+00015C  Escribir_KEY
+000160  lcd_putc
+00017D  lcd_gotoxy
+00019D  @cinit1
+00019D  MAIN
+0001A7  @cinit2
+
+Project Directory:
+    D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\Teclado_LCD_PR\
+
+Project Files:
+    TecladoLCD.c                                            [19-jun-14 10:30  CRC=B82F865F]
+    C:\Program Files (x86)\PICC\Devices\16f877a.h           [03-jul-13 21:28  CRC=4E65664C]
+    LCD.C                                                   [05-sep-07 09:54  CRC=EE70690B]
+
+Source signature=E375BEC1
+
+Units:
+    TecladoLCD (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   TecladoLCD.xsym
+    Errors:      TecladoLCD.err
+    Ext Symbols: TecladoLCD.esym
+    INHX8:       TecladoLCD.hex
+    Symbols:     TecladoLCD.sym
+    List:        TecladoLCD.lst
+    Debug/COFF:  TecladoLCD.cof
+    Project:     TecladoLCD.ccspjt
+    Call Tree:   TecladoLCD.tre
+    Statistics:  TecladoLCD.STA

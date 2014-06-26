@@ -1,0 +1,23 @@
+[PROJECT]
+Target=Dimmer_Prog1.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=Dimmer_Prog1.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[D:\IGNACIO\Programacion\Microcontroladores\PicC\Dimmer_Prog1\Dimmer_Prog1]
+Type=4
+[mru-list]
+1=Dimmer_Prog1.c
+[Opened Files]
+1=..\..\..\..\Universidad\Ciclo2014_I\Sistemas Embebidos\PIC_PROGRAMACION_SD\DESARROLLADO\T4_E2\T4_E2.c
+2=
+3=
+[Dimmer_Prog1.c]
+Type=4
+[Units]
+Count=1
+1=Dimmer_Prog1 (main)

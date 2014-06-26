@@ -1,0 +1,62 @@
+
+ROM used:   451/8192 (6%)
+            451/8192 (6%) including unused fragments
+
+            0.5 Average locations per line
+            4.1 Average locations per statement
+
+RAM used:   10/368 (3%) at main() level
+            24/368 (7%) worst case
+
+Stack used: 4 worst case (4 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   83    46  42  Teclado_LCD.c
+  661     0   0  C:\Program Files (x86)\PICC\Devices\16f877a.h
+  180    63  58  LCD.C
+----- -----
+  924   109 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     20   4    1             @delay_ms1
+0      8   2    0             @const629
+ Inline         3   463  4.3  lcd_read_byte
+0     17   4    1   134  2.2  lcd_send_nibble
+0     60  13    3   317  4.3  lcd_send_byte
+0     44  10    2   422  4.7  lcd_init
+ Inline         4   186  5.5  lcd_gotoxy
+0     52  12    1   272  4.1  lcd_putc
+0     21   5    0             @const659
+0     20   4    0             @const662
+0     51  11    2   313  4.4  MAIN
+0      1   0    0             @const671
+0     75  17    4             @PSTRINGC7_650
+0      1   0    0             @const673
+0     77  17    1   830  7.7  teclado
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               8
+    Statements              109
+    Comments                164
+    Volume (V)              4496
+    Difficulty (D)          36.1
+    Effort to implement (E) 162329
+    Time to implement (T)   2 hours, 30 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   13
+    Maintainability (MI)    129
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF   447  1597  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

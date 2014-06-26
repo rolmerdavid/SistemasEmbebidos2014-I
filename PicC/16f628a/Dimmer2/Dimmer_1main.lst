@@ -1,0 +1,368 @@
+CCS PCM C Compiler, Version 5.008, 5967               17-abr-14 22:49
+
+               Filename:   D:\IGNACIO\Programacion\Microcontroladores\PicC\16f628a\Dimmer2\Dimmer_1main.lst
+
+               ROM used:   234 words (11%)
+                           Largest free fragment is 1814
+               RAM used:   16 (7%) at main() level
+                           21 (9%) worst case
+               Stack used: 4 locations (1 in main + 3 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0D7
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   7F,W
+0009:  MOVWF  20
+000A:  MOVF   0A,W
+000B:  MOVWF  27
+000C:  CLRF   0A
+000D:  SWAPF  20,F
+000E:  MOVF   04,W
+000F:  MOVWF  22
+0010:  MOVF   77,W
+0011:  MOVWF  23
+0012:  MOVF   78,W
+0013:  MOVWF  24
+0014:  MOVF   79,W
+0015:  MOVWF  25
+0016:  MOVF   7A,W
+0017:  MOVWF  26
+0018:  BCF    03.7
+0019:  BCF    03.5
+001A:  BTFSS  0B.4
+001B:  GOTO   01E
+001C:  BTFSC  0B.1
+001D:  GOTO   0A7
+001E:  MOVF   22,W
+001F:  MOVWF  04
+0020:  MOVF   23,W
+0021:  MOVWF  77
+0022:  MOVF   24,W
+0023:  MOVWF  78
+0024:  MOVF   25,W
+0025:  MOVWF  79
+0026:  MOVF   26,W
+0027:  MOVWF  7A
+0028:  MOVF   27,W
+0029:  MOVWF  0A
+002A:  SWAPF  21,W
+002B:  MOVWF  03
+002C:  SWAPF  7F,F
+002D:  SWAPF  7F,W
+002E:  RETFIE
+.................... #include <16F628A.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+*
+009B:  BCF    0A.0
+009C:  BCF    0A.1
+009D:  BCF    0A.2
+009E:  ADDWF  02,F
+009F:  GOTO   04A
+00A0:  GOTO   04D
+00A1:  GOTO   057
+00A2:  GOTO   061
+00A3:  GOTO   06B
+00A4:  GOTO   075
+00A5:  GOTO   07F
+00A6:  GOTO   089
+....................  
+.................... #list 
+....................  
+....................  
+.................... #FUSES HS,NOWDT,NOPROTECT,NOLVP 
+.................... #USE delay(internal=4000000) 
+*
+002F:  MOVLW  2F
+0030:  MOVWF  04
+0031:  BCF    03.7
+0032:  MOVF   00,W
+0033:  BTFSC  03.2
+0034:  GOTO   043
+0035:  MOVLW  01
+0036:  MOVWF  78
+0037:  CLRF   77
+0038:  DECFSZ 77,F
+0039:  GOTO   038
+003A:  DECFSZ 78,F
+003B:  GOTO   037
+003C:  MOVLW  4A
+003D:  MOVWF  77
+003E:  DECFSZ 77,F
+003F:  GOTO   03E
+0040:  GOTO   041
+0041:  DECFSZ 00,F
+0042:  GOTO   035
+0043:  RETURN
+.................... #USE FAST_IO(B)   //Puerto B 
+.................... #USE FAST_IO(A)   //Puerto D 
+....................  
+.................... // Creacion de Variables 
+.................... int angulo = 0; 
+.................... int Portb1_ant = 0; 
+.................... int Portb1_now = 0; 
+.................... // Fin de Creacion de Variables 
+....................  
+.................... // ************************************** 
+.................... // Declaracion de Funciones 
+.................... void Cargar_configuracion(); 
+.................... void Configurar_interrupciones(); 
+.................... void VariacionAnguloAplauso (int incremento); 
+.................... void Disparar(int ang); 
+.................... // ************************************** 
+....................  
+.................... // ************************************** 
+.................... // Declaracion de las Interrupciones 
+.................... #INT_EXT       //Sentencias de la interrupcion RB0 
+.................... void ext_isr(){ 
+....................    Disparar(angulo); 
+*
+00A7:  MOVF   28,W
+00A8:  MOVWF  2D
+00A9:  GOTO   044
+00AA:  BCF    0B.1
+00AB:  BCF    0A.3
+00AC:  GOTO   01E
+....................    } 
+.................... // ************************************************** 
+....................  
+.................... // FUNCION PRINCIPAL 
+.................... void main() 
+*
+00D7:  MOVF   03,W
+00D8:  ANDLW  1F
+00D9:  MOVWF  03
+00DA:  BSF    03.5
+00DB:  BSF    0E.3
+00DC:  BCF    03.5
+00DD:  CLRF   28
+00DE:  CLRF   29
+00DF:  CLRF   2A
+00E0:  MOVLW  07
+00E1:  MOVWF  1F
+00E2:  BCF    03.7
+.................... {   
+....................    Cargar_configuracion(); 
+00E3:  GOTO   0AD
+....................    Configurar_interrupciones(); 
+00E4:  GOTO   0B7
+....................        
+....................    while(true) 
+....................    {   
+....................       VariacionAnguloAplauso(1); 
+00E5:  MOVLW  01
+00E6:  MOVWF  2B
+00E7:  GOTO   0BF
+00E8:  GOTO   0E5
+....................    } 
+.................... } 
+....................  
+00E9:  SLEEP
+.................... // **************************************** 
+.................... // Definicion de las Funciones 
+....................  
+.................... void VariacionAnguloAplauso (int incremento){ 
+....................    // Portb1_ant y Portb1_now  fueron iniciados en 0 
+....................    if (input(PIN_B1) == 1){        //  verifica si el PORTB,1 es 1 
+*
+00BF:  BTFSS  06.1
+00C0:  GOTO   0C6
+....................          Portb1_ant = Portb1_now; 
+00C1:  MOVF   2A,W
+00C2:  MOVWF  29
+....................          Portb1_now = 1; 
+00C3:  MOVLW  01
+00C4:  MOVWF  2A
+....................       }else { 
+00C5:  GOTO   0C9
+....................          Portb1_ant = Portb1_now; 
+00C6:  MOVF   2A,W
+00C7:  MOVWF  29
+....................          Portb1_now = 0; 
+00C8:  CLRF   2A
+....................       } 
+....................     if (Portb1_ant == 0 && Portb1_now == 1){ 
+00C9:  MOVF   29,F
+00CA:  BTFSS  03.2
+00CB:  GOTO   0D6
+00CC:  DECFSZ 2A,W
+00CD:  GOTO   0D6
+....................          if(angulo >= 7){ 
+00CE:  MOVF   28,W
+00CF:  SUBLW  06
+00D0:  BTFSC  03.0
+00D1:  GOTO   0D4
+....................             angulo = 0; 
+00D2:  CLRF   28
+....................          }else { 
+00D3:  GOTO   0D6
+....................             angulo = angulo + incremento; 
+00D4:  MOVF   2B,W
+00D5:  ADDWF  28,F
+....................          } 
+....................       } 
+00D6:  GOTO   0E8 (RETURN)
+.................... } 
+....................  
+.................... void Cargar_configuracion(){ 
+....................    SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada 
+*
+00AD:  MOVLW  FF
+00AE:  BSF    03.5
+00AF:  MOVWF  06
+....................    SET_TRIS_A(0x00);    //configura PORTA salida 
+00B0:  MOVLW  00
+00B1:  MOVWF  05
+....................    OUTPUT_A(0x00);   //inicializando PORTA en 0x00 
+00B2:  BCF    03.5
+00B3:  CLRF   05
+....................    angulo = 2;       // inicializando el angulo de dispario en 2ms 
+00B4:  MOVLW  02
+00B5:  MOVWF  28
+00B6:  GOTO   0E4 (RETURN)
+.................... } 
+....................  
+.................... void Configurar_interrupciones(){ 
+....................    enable_interrupts(INT_EXT);   // habilitar interrupcion del RB0 /INTE 
+00B7:  BSF    0B.4
+....................    ext_int_edge(L_TO_H);         // Flag INTF si flanco de bajada / H_TO_L bajada 
+00B8:  BSF    03.5
+00B9:  BSF    01.6
+....................    enable_interrupts(INT_RB); 
+00BA:  BCF    03.5
+00BB:  BSF    0B.3
+....................    enable_interrupts(GLOBAL); 
+00BC:  MOVLW  C0
+00BD:  IORWF  0B,F
+00BE:  GOTO   0E5 (RETURN)
+.................... } 
+....................  
+.................... void Disparar(int ang){ 
+....................    switch (ang){ 
+*
+0044:  MOVF   2D,W
+0045:  ADDLW  F8
+0046:  BTFSC  03.0
+0047:  GOTO   092
+0048:  ADDLW  08
+0049:  GOTO   09B
+....................       case 0 :  
+....................                OUTPUT_A(0x01); 
+004A:  MOVLW  01
+004B:  MOVWF  05
+....................          break; 
+004C:  GOTO   092
+....................       case 1 : delay_ms(1000); 
+004D:  MOVLW  04
+004E:  MOVWF  2E
+004F:  MOVLW  FA
+0050:  MOVWF  2F
+0051:  CALL   02F
+0052:  DECFSZ 2E,F
+0053:  GOTO   04F
+....................                OUTPUT_A(0x01); 
+0054:  MOVLW  01
+0055:  MOVWF  05
+....................          break; 
+0056:  GOTO   092
+....................       case 2 : delay_ms(2000); 
+0057:  MOVLW  08
+0058:  MOVWF  2E
+0059:  MOVLW  FA
+005A:  MOVWF  2F
+005B:  CALL   02F
+005C:  DECFSZ 2E,F
+005D:  GOTO   059
+....................                OUTPUT_A(0x01); 
+005E:  MOVLW  01
+005F:  MOVWF  05
+....................          break; 
+0060:  GOTO   092
+....................       case 3 : delay_ms(3000); 
+0061:  MOVLW  0C
+0062:  MOVWF  2E
+0063:  MOVLW  FA
+0064:  MOVWF  2F
+0065:  CALL   02F
+0066:  DECFSZ 2E,F
+0067:  GOTO   063
+....................                OUTPUT_A(0x01); 
+0068:  MOVLW  01
+0069:  MOVWF  05
+....................          break; 
+006A:  GOTO   092
+....................       case 4 : delay_ms(4000); 
+006B:  MOVLW  10
+006C:  MOVWF  2E
+006D:  MOVLW  FA
+006E:  MOVWF  2F
+006F:  CALL   02F
+0070:  DECFSZ 2E,F
+0071:  GOTO   06D
+....................                OUTPUT_A(0x01); 
+0072:  MOVLW  01
+0073:  MOVWF  05
+....................          break; 
+0074:  GOTO   092
+....................       case 5 : delay_ms(5000); 
+0075:  MOVLW  14
+0076:  MOVWF  2E
+0077:  MOVLW  FA
+0078:  MOVWF  2F
+0079:  CALL   02F
+007A:  DECFSZ 2E,F
+007B:  GOTO   077
+....................                OUTPUT_A(0x01); 
+007C:  MOVLW  01
+007D:  MOVWF  05
+....................          break; 
+007E:  GOTO   092
+....................       case 6 : delay_ms(6000); 
+007F:  MOVLW  18
+0080:  MOVWF  2E
+0081:  MOVLW  FA
+0082:  MOVWF  2F
+0083:  CALL   02F
+0084:  DECFSZ 2E,F
+0085:  GOTO   081
+....................                OUTPUT_A(0x01); 
+0086:  MOVLW  01
+0087:  MOVWF  05
+....................          break; 
+0088:  GOTO   092
+....................       case 7 : delay_ms(7000); 
+0089:  MOVLW  1C
+008A:  MOVWF  2E
+008B:  MOVLW  FA
+008C:  MOVWF  2F
+008D:  CALL   02F
+008E:  DECFSZ 2E,F
+008F:  GOTO   08B
+....................                OUTPUT_A(0x01); 
+0090:  MOVLW  01
+0091:  MOVWF  05
+....................          break; 
+....................    } 
+....................       delay_ms(1000); 
+0092:  MOVLW  04
+0093:  MOVWF  2E
+0094:  MOVLW  FA
+0095:  MOVWF  2F
+0096:  CALL   02F
+0097:  DECFSZ 2E,F
+0098:  GOTO   094
+....................       OUTPUT_A(0x00); 
+0099:  CLRF   05
+009A:  GOTO   0AA (RETURN)
+.................... } 
+.................... //***************************************** 
+
+Configuration Fuses:
+   Word  1: 3F70   NOWDT PUT INTRC_IO MCLR BROWNOUT NOLVP NOCPD NOPROTECT

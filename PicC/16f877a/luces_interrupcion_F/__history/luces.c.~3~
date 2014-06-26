@@ -1,0 +1,19 @@
+#include <16f877a.h>
+#device ICD=TRUE
+#device adc=10
+#fuses HS,NOWDT,NOPROTECT,NOLVP 
+#use delay(clock=10000000) 
+//#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8) 
+//#define Led pin_b0 //Nombra a pin_b0 como Led
+//#define Retardo delay_ms(1000)//Nombra a delay_ms() como Retardo
+
+
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

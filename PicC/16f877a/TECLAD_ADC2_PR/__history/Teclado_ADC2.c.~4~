@@ -1,0 +1,7 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+#USE delay(clock=10000000)
+
+#INCLUDE "Bits.C"
+
+

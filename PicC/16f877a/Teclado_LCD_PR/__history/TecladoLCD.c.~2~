@@ -1,0 +1,26 @@
+#include <TecladoLCD.h>
+#include <lcd.c>
+
+
+#INT_RB
+void  RB_isr(void) 
+{
+
+}
+
+
+
+void main()
+{
+
+   enable_interrupts(INT_RB);
+   enable_interrupts(GLOBAL);
+
+   lcd_init();
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

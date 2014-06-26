@@ -1,0 +1,39 @@
+#include <16F628A.h>
+
+#FUSES HS,NOWDT,NOPROTECT,NOLVP
+#use delay(internal=4000000)
+
+#USE FAST_IO(B)   //Puerto B
+#USE FAST_IO(A)   //Puerto D
+
+// *****************************************************************
+// Declaracion de Funciones
+void Configuracion();
+
+//******************************************************************
+
+// *****************************************************************
+// Funcion Prinipal
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}
+//*****************************************************************
+
+// ****************************************************************
+// Definicion de Funciones
+void Configuracion(){
+   SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada
+   SET_TRIS_A(0x00);    //configura PORTD salida  
+   OUTPUT_A(0x00);   //inicializando PORTD en 0x00
+   ext_int_edge(L_TO_H);         // Flag INTF si flanco de bajada / H_TO_L bajada
+   enable_interrupts(INT_RB);    // Habilita la interrupcion RB
+   enable_interrupts(GLOBAL);
+}
+
+//****************************************************************

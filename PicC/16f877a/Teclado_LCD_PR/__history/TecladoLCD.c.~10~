@@ -1,0 +1,97 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP  
+#USE delay(crystal=10000000)       // Definiendo cristal de 10MHz
+#USE FAST_IO(B)   //Puerto B
+#include <lcd.c>
+
+// **************************************
+// Creacion de Variables
+char KEYS[4][4] = {{'1','2','3','A'},
+                   {'4','5','6','B'},
+                   {'7','8','9','C'},
+                   {'*','0','#','D'}};
+
+
+
+
+//***************************************
+
+
+
+// **************************************
+// Declaracion de Funciones
+void Cargar_configuracion();
+void Configurar_interrupciones();
+void Iniciar_teclado();
+
+//***************************************
+
+
+// **************************************
+// Declaracion de las Interrupciones
+#INT_RB
+void  RB_isr(void) {
+
+}
+#int_TIMER0
+void TIMER0_isr(void) {
+   output_toggle(PIN_B0);
+   set_timer0 (0x1B);  }               //Se recarga el timer0
+
+
+//***************************************
+
+
+// **************************************
+// FUNCION PRINCIPAL
+void main()
+{
+   lcd_init();
+   Cargar_configuracion();
+   Configurar_interrupciones();
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}
+//***************************************
+
+
+// ****************************************
+// Definicion de las Funciones
+
+void Cargar_configuracion(){
+   SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada
+   SET_TRIS_D(0x00);    //configura PORTD salida
+   }
+
+void Configurar_interrupciones(){
+   setup_timer_0(RTCC_INTERNAL|RTCC_DIV_2);   //Configuración timer0
+   set_timer0 (0x1B);                    //Carga del timer0
+   enable_interrupts(INT_TIMER0);       //Habilita interrupción timer0
+
+   enable_interrupts(INT_RB);       // Habilitando interrupcion RB /RB4-RB7 
+   enable_interrupts(GLOBAL);       // Habilita las interrupciones
+}
+
+void Iniciar_teclado(){
+
+}
+
+void Testeo(){
+   output_high(PIN_B0);
+   delay_ms(1);
+   output_high(PIN_B1);
+   delay_ms(1);
+   output_high(PIN_B2);
+   delay_ms(1);
+   output_high(PIN_B3);
+   delay_ms(1); 
+}
+
+
+
+//*****************************************
+
+

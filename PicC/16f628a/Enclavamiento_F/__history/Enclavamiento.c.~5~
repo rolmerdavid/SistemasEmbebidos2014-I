@@ -1,0 +1,21 @@
+#include <16F628A.h>
+
+#FUSES HS,NOWDT,NOPROTECT,NOLVP
+#use delay(internal=4000000)
+
+
+void Configuracion(){
+   SET_TRIS_B(0x00);
+}
+
+
+
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

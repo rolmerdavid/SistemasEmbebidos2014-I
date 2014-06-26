@@ -1,0 +1,55 @@
+#include <16f877a.h>
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+#USE delay(clock=10000000)
+#USE FAST_IO(B)   //Puerto B
+
+#INCLUDE "Bits.C"
+
+// **************************************
+// Creacion de Variables
+
+int   tecla_temp,tecla,i,teclanew;
+int   const tabla_tecla[17]={0xD7,0xEE,0xDE,0xBE,0xED,0xDD,0xBD,0xEB,0xDB,0xBB,0xE7,0xB7,0x77,0x7B,0x7D,0x7E,0x80};
+int   const tabla_ascii[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+//***************************************
+
+
+// **************************************
+// Declaracion de Funciones
+void Cargar_configuracion();
+void Configurar_interrupciones();
+void Iniciar_teclado();
+
+//***************************************
+
+
+
+// **************************************
+// Declaracion de las Interrupciones
+#INT_RB
+void  RB_isr(void) {
+   VER_TECLA();
+}
+#int_TIMER0
+void TIMER0_isr(void) {
+   set_timer0 (0x1B);      // Se recarga el TMR0  
+   //DAR_COL();
+   }
+//***************************************
+
+
+// **************************************
+// FUNCION PRINCIPAL
+void main()
+{
+   Cargar_configuracion();
+   Configurar_interrupciones();
+   while(TRUE)
+   {
+      Escribir_KEY();
+      delay_ms(50);
+   }
+
+}
+//***************************************
+

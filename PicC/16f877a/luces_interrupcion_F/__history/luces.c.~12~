@@ -1,0 +1,23 @@
+#include <16f877a.h>
+#fuses HS,NOWDT,NOPROTECT,NOLVP 
+#use delay(clock=10000000) 
+#byte PORTA = 0x05      //asignacion PORTA
+#byte PORTB = 0x06      //asignacion PORTB
+#byte PORTC = 0x07      //asignacion PORTC
+#byte PORTD = 0x08      //asignacion PORTD
+
+void main()
+{
+   SET_TRIS_B(0xFF);    //configura PORTB entrada / 0=salida / 1=entrada
+   SET_TRIS_D(0x00);    //configura PORTD salida
+   
+   
+   while(TRUE)
+   {
+      if(PIN_B0 == 1){
+         
+      }
+      
+   }
+
+}

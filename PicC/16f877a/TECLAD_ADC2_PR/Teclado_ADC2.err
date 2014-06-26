@@ -1,0 +1,4 @@
+>>> Warning 216 "Teclado_ADC2.c" Line 182(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+      Memory usage:   ROM=7%      RAM=5% - 8%
+      0 Errors,  1 Warnings.
+Build Successful.

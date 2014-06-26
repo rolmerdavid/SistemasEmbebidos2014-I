@@ -1,0 +1,60 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+006     kbd_port_b
+008     lcd
+008     PSP_DATA
+008     PORTD
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @cinit1
+000004  MAIN
+00000E  @cinit2
+
+Project Directory:
+    D:\IGNACIO\Programacion\Microcontroladores\PicC\16f877a\TECLADO1_PR\
+
+Project Files:
+    TECLADO.c                                               [21-jun-14 20:49  CRC=D8102B21]
+    C:\Program Files (x86)\PICC\Devices\16f877a.h           [03-jul-13 21:28  CRC=4E65664C]
+    LCD.C                                                   [05-sep-07 09:54  CRC=EE70690B]
+    kbd2.c                                                  [31-oct-13 03:01  CRC=FA6214CB]
+
+Source signature=09AA240E
+
+Units:
+    TECLADO (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   TECLADO.xsym
+    Errors:      TECLADO.err
+    Ext Symbols: TECLADO.esym
+    INHX8:       TECLADO.hex
+    Symbols:     TECLADO.sym
+    List:        TECLADO.lst
+    Debug/COFF:  TECLADO.cof
+    Project:     TECLADO.ccspjt
+    Call Tree:   TECLADO.tre
+    Statistics:  TECLADO.STA

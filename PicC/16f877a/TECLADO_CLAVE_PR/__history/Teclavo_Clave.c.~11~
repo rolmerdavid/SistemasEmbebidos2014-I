@@ -1,0 +1,57 @@
+#include "16f877a.h"
+#fuses  NOWDT, HS, NOLVP, NOPROTECT
+#use delay(clock=10000000)
+#include "LCD.c"
+#include "kbd2.c"
+
+// **************************************************************
+// Declaracion de las variables
+char tecla;
+int1 estado_clave=0;
+char clave[4]={'1','3','5','7'};
+int pos_clave=0;
+int i=0;
+//***************************************************************
+
+// **************************************************************
+// Declaracion de funciones
+   void Cargar_configuracion();
+   void Configurar_interrupciones();
+   void Ingreso_Clave();
+//***************************************************************
+
+
+// ***************************************************************
+// Funcion Principal
+void main()
+{
+
+   while(TRUE)
+   {
+      
+   }
+
+}
+//****************************************************************
+
+// **************************************************************
+// Definicion de las funciones
+void Cargar_configuracion(){
+   
+}
+void Configurar_interrupciones(){
+   
+}
+void Ingreso_Clave(){
+   pos_clave = 0;
+  while (pos_clave<=4){
+    tecla = kbd_getc();
+    if (tecla != 0){
+       if (tecla != clave[pos_clave]){
+          estado_clave = 1;
+       }
+       pos_clave++;
+    }
+  }
+}
+//***************************************************************
