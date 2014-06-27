@@ -1,0 +1,91 @@
+CCS PCM C Compiler, Version 5.008, 5967               26-jun-14 16:20
+
+               Filename:   D:\IGNACIO\ProgramacionGitHub\SistemasEmbebidos2014-I\PicC\16f877a\Pulso_PR\Pulso.lst
+
+               ROM used:   48 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   5 (1%) at main() level
+                           6 (2%) worst case
+               Stack used: 1 locations
+               Stack size: 7
+
+*
+0000:  NOP
+0001:  MOVLW  00
+0002:  MOVWF  0A
+0003:  GOTO   018
+.................... #INCLUDE <16f877a.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #DEVICE ICD=TRUE 
+.................... #DEVICE adc=10 
+.................... #FUSES HS,NOWDT,NOPROTECT,NOLVP   
+.................... #USE FAST_IO(A)  
+.................... #USE FAST_IO(B) 
+....................  
+.................... #use delay(crystal=20000000) 
+0004:  MOVLW  21
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+....................  
+.................... void main() 
+0018:  MOVF   03,W
+0019:  ANDLW  1F
+001A:  MOVWF  03
+001B:  BSF    03.5
+001C:  BSF    1F.0
+001D:  BSF    1F.1
+001E:  BSF    1F.2
+001F:  BCF    1F.3
+0020:  MOVLW  07
+0021:  MOVWF  1C
+0022:  BCF    03.7
+.................... { 
+....................    SET_TRIS_B(0x00); 
+0023:  MOVLW  00
+0024:  MOVWF  06
+....................    while(TRUE) 
+....................    { 
+....................       output_high(PIN_B0); 
+0025:  BCF    03.5
+0026:  BSF    06.0
+....................       delay_ms(50); 
+0027:  MOVLW  32
+0028:  MOVWF  21
+0029:  CALL   004
+....................       output_low(PIN_B0); 
+002A:  BCF    06.0
+....................       delay_ms(50); 
+002B:  MOVLW  32
+002C:  MOVWF  21
+002D:  CALL   004
+002E:  GOTO   026
+....................    } 
+....................  
+.................... } 
+002F:  GOTO   02F
+
+Configuration Fuses:
+   Word  1: 373A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT DEBUG NOPROTECT
+
+   Some fuses have been forced to be compatible with the ICD debugger.

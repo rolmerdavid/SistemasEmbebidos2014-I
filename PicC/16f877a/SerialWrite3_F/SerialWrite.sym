@@ -1,0 +1,147 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+008     lcd
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+018     RCSTA
+019     TXREG
+01A     RCREG
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+021-024 MAIN.Radc
+025     MAIN.Vadc
+026     MAIN.q
+027-02A @SFTOI.P1
+027-028 @ITOF.P2
+027-02A @PRINTF_L32D_647FPFPF.P3
+027     USART_SendC.send
+027     lcd_init.i
+027     @PSTRINGCN7_647.P1
+027     MAIN.@SCRATCH1
+028     lcd_init.@SCRATCH1
+028     MAIN.@SCRATCH2
+028     @PSTRINGCN7_647.@SCRATCH1
+029     MAIN.@SCRATCH3
+029     @PSTRINGCN7_647.@SCRATCH2
+02A     MAIN.@SCRATCH4
+02A     @PSTRINGCN7_647.@SCRATCH3
+02B     @PRINTF_L32D_647FPFPF.P1
+02B-02E @DIVFF.P2
+02B     @PSTRINGCN7_647.@SCRATCH4
+02C     @PRINTF_L32D_647FPFPF.@SCRATCH1
+02D     @PRINTF_L32D_647FPFPF.@SCRATCH2
+02E     @PRINTF_L32D_647FPFPF.@SCRATCH3
+02F-032 @DIVFF.P1
+02F     @PRINTF_L32D_647FPFPF.@SCRATCH4
+030     @PRINTF_L32D_647FPFPF.@SCRATCH5
+031     @PRINTF_L32D_647FPFPF.@SCRATCH6
+032     @PRINTF_L32D_647FPFPF.@SCRATCH7
+033     @DIVFF.@SCRATCH1
+033     @PRINTF_L32D_647FPFPF.@SCRATCH8
+034-037 @DIV3232.P1
+034-037 @MULFF.P2
+034     lcd_putc.c
+034-037 @FTOSD.P1
+034     @DIVFF.@SCRATCH2
+035     @delay_ms1.P1
+035     lcd_gotoxy.x
+035     @DIVFF.@SCRATCH3
+036     lcd_gotoxy.y
+036     @DIVFF.@SCRATCH4
+037     lcd_gotoxy.address
+037     @DIVFF.@SCRATCH5
+038-03B @MULFF.P1
+038-03B @DIV3232.P2
+038     lcd_gotoxy.@SCRATCH1
+038     @DIVFF.@SCRATCH6
+038     @FTOSD.@SCRATCH1
+039     lcd_send_byte.address
+03A     lcd_send_byte.n
+03B     lcd_read_byte.low
+03B     lcd_send_byte.@SCRATCH1
+03C     lcd_read_byte.high
+03C     lcd_send_nibble.n
+03C     @MULFF.@SCRATCH1
+03C     @DIV3232.@SCRATCH1
+03D     lcd_read_byte.@SCRATCH1
+03D     @MULFF.@SCRATCH2
+03D     @DIV3232.@SCRATCH2
+03E     @MULFF.@SCRATCH3
+03E     @DIV3232.@SCRATCH3
+03F     @MULFF.@SCRATCH4
+03F     @DIV3232.@SCRATCH4
+040     @MULFF.@SCRATCH5
+040     @DIV3232.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+098     TXSTA
+099     SPBRG
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  LCD_INIT_STRING.call
+000008  LCD_INIT_STRING.data
+00000C  @const677.call
+000010  Ini_USART
+000021  @delay_ms1
+000036  lcd_send_nibble
+000044  lcd_send_byte
+000045  lcd_read_byte
+00007E  lcd_init
+0000AA  @ITOF
+0000C9  @MULFF
+00013E  @DIVFF
+00020A  @SFTOI
+00022B  USART_SendC
+000235  lcd_putc
+00024C  lcd_gotoxy
+00026A  @PSTRINGCN7_647
+0002C0  @DIV3232
+00030F  @PRINTF_L32D_647FPFPF
+000336  @FTOSD
+0003F1  MAIN
+0003F1  @cinit1
+0003FB  @cinit2
+
+Project Directory:
+    D:\IGNACIO\ProgramacionGitHub\SistemasEmbebidos2014-I\PicC\16f877a\SerialWrite3_PR\
+
+Project Files:
+    SerialWrite.c                                           [26-jun-14 12:38  CRC=0158E861]
+    C:\Program Files (x86)\PICC\Devices\16f877a.h           [03-jul-13 14:28  CRC=4E65664C]
+    LCD.C                                                   [05-sep-07 09:54  CRC=EE70690B]
+
+Source signature=2C9F20C3
+
+Units:
+    SerialWrite (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+
+Output Files:
+    XREF file:   SerialWrite.xsym
+    Errors:      SerialWrite.err
+    Ext Symbols: SerialWrite.esym
+    INHX8:       SerialWrite.hex
+    Symbols:     SerialWrite.sym
+    List:        SerialWrite.lst
+    Debug/COFF:  SerialWrite.cof
+    Project:     SerialWrite.ccspjt
+    Call Tree:   SerialWrite.tre
+    Statistics:  SerialWrite.STA

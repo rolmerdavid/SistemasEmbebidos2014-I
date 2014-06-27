@@ -1,0 +1,67 @@
+
+ROM used:   1166/7936 (15%)
+            1166/7936 (15%) including unused fragments
+
+            1.3 Average locations per line
+            13.4 Average locations per statement
+
+RAM used:   15/357 (4%) at main() level
+            37/357 (10%) worst case
+
+Stack used: 4 worst case (4 in main + 0 for interrupts)
+Stack size: 7
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   82    24  28  SerialWrite.c
+  661     0   0  C:\Program Files (x86)\PICC\Devices\16f877a.h
+  180    63  72  LCD.C
+----- -----
+  923    87 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     21   2    1             @delay_ms1
+0      8   1    0   376  4.0  @const626
+ Inline         3   463  4.3  lcd_read_byte
+0     14   1    1   134  2.2  lcd_send_nibble
+0     58   5    3   317  4.3  lcd_send_byte
+0     44   4    2   422  4.7  lcd_init
+ Inline         4   186  5.5  lcd_gotoxy
+0     53   5    1   272  4.1  lcd_putc
+0    157  13   10   454  4.1  MAIN
+0     31   3    2             @ITOF
+0    117  10   13             @MULFF
+0    204  17   14             @DIVFF
+0     33   3    4             @SFTOI
+0      4   0    0    43  1.5  @const677
+0     86   7    5    43  1.5  @PSTRINGCN7_647
+ Inline         5             @FTOSD
+0     79   7   13             @DIV3232
+0    226  19   13             @PRINTF_L32D_647FPFPF
+0     17   1    0   108  1.7  Ini_USART
+0     10   1    1    43  1.5  USART_SendC
+ Inline         0    43  1.5  @cinit1
+
+Program metrics:
+    Functions               13
+    Statements              87
+    Comments                181
+    Volume (V)              4846
+    Difficulty (D)          40.2
+    Effort to implement (E) 194680
+    Time to implement (T)   3 hours, 0 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   7
+    Maintainability (MI)    85
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF  1162  882  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01EFF     0  1792  
+
+
+

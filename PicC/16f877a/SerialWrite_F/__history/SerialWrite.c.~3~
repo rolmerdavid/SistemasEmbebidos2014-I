@@ -1,0 +1,17 @@
+#INCLUDE <16f877a.h>
+#DEVICE ICD=TRUE
+#DEVICE adc=10
+#FUSES HS,NOWDT,NOPROTECT,NOLVP 
+#USE delay(clock=10000000) 
+#USE rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8) 
+#USE FAST_IO(A) 
+#USE FAST_IO(B)
+#USE FAST_IO(C) 
+
+void main (){
+
+
+
+}
+
+

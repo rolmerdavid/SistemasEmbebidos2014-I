@@ -1,0 +1,23 @@
+[PROJECT]
+Target=Pulso.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.008
+Compiler=PCM
+CCSVersion=5.008
+[Target Data]
+FileList=Pulso.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[D:\IGNACIO\ProgramacionGitHub\SistemasEmbebidos2014-I\PicC\16f877a\Pulso_PR\Pulso]
+Type=4
+[mru-list]
+1=Pulso.c
+[Opened Files]
+1=Pulso.c
+2=Pulso.h
+3=
+[Pulso.c]
+Type=4
+[Units]
+Count=1
+1=Pulso (main)
